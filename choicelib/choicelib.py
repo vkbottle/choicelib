@@ -18,17 +18,17 @@ def choice_in_order(
     :param default: default module name [deprecated]
     :return: module if do_import else module_name
     """
-    default = default or module_names[0]
+    default_name = default or module_names[0]
     installed = [
         module_name
         for module_name in module_names
         if importlib.util.find_spec(module_name) is not None
     ]
-    if not installed:
+    if not installed and default is None:
         raise ModuleNotFoundError(
             "No proper module was installed. "
             "List: {}".format(", ".join(module_names))
         )
 
-    ordered_module_name = installed[order.value] if installed else default
+    ordered_module_name = installed[order.value] if installed else default_name
     return ordered_module_name if not do_import else __import__(ordered_module_name)

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "choicelib"
-version = "0.1.2"
+version = "0.1.4"
 description = "Choice a best similar-interface library from given list"
 authors = ["timoniq"]
 license = "MIT"
